@@ -1,47 +1,23 @@
-# GigLink — INFR3120 Fall26 Project
+# GigLink
 
-A local gig board web application built with the MEAN-style stack (Express + EJS + MongoDB) for INFR3120 Web and Scripting Programming, Project Part 1 (First Release).
+INFR3120 Fall26 Project - Part 1
 
-GigLink lets people post short-term gigs (moving help, web work, cleaning, tutoring, and more) and browse, edit, or remove them. Full CRUD on the Gig object.
+GigLink is a gig board where people can post small local jobs (moving help, web stuff, cleaning, tutoring, etc.) and others can browse them. You can add a gig, see all of them, open one, edit it, or delete it. Basically full CRUD on gigs.
 
-## Tech stack
+## Built with
+- Node.js + Express (made with express-generator)
+- EJS for the views
+- MongoDB (Atlas) with Mongoose
+- method-override so the forms can do PUT and DELETE
+- dotenv for the db connection
 
-- **Node.js + Express** (scaffolded with `express-generator`)
-- **EJS** view engine
-- **MongoDB** (MongoDB Atlas) with **Mongoose**
-- **method-override** for PUT/DELETE from HTML forms
-- **dotenv** for config/secrets
+## How to run
+1. npm install
+2. make a .env file (copy .env.example) and put your MongoDB connection string in MONGODB_URI
+3. npm start
+4. go to http://localhost:3000
 
-## Features (First Release)
+## Note
+The real .env with the db password is not pushed to github, its in .gitignore. Only .env.example is here.
 
-- Landing page with branding and the latest gigs
-- Post a Gig (hero action) with validation
-- Browse all gigs
-- View a single gig
-- Edit a gig
-- Delete a gig
-
-## Running locally
-
-1. Install dependencies:
-   ```
-   npm install
-   ```
-2. Create a `.env` file from the example and add your MongoDB Atlas connection string:
-   ```
-   cp .env.example .env
-   ```
-   Then edit `.env` and set `MONGODB_URI`.
-3. Start the app:
-   ```
-   npm start
-   ```
-4. Open `http://localhost:3000`.
-
-## Important
-
-The real `.env` file (with the MongoDB password) is **not** committed. It is listed in `.gitignore`. Only `.env.example` is in the repo.
-
-## Project plan
-
-See the project document in this repository (`INFR3120 Fall26 Project - Part 1.docx`) for the project idea and the team task breakdown.
+See the project doc in the repo for the project idea and who did what.
