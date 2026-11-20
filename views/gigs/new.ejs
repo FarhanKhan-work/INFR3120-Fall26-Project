@@ -1,0 +1,56 @@
+<%- include('../partials/header') %>
+
+<section class="section">
+  <div class="container form-wrap">
+    <h1 style="text-align:center;">Post a Gig</h1>
+    <p class="sub" style="text-align:center;">Fill in the details and your gig goes live on the board.</p>
+
+    <% if (errors) { %>
+      <div class="alert">
+        Please fix the following:
+        <ul><% errors.forEach(function(e){ %><li><%= e %></li><% }); %></ul>
+      </div>
+    <% } %>
+
+    <div class="form-card">
+      <form action="/gigs" method="POST">
+        <div class="field">
+          <label for="title">Gig title</label>
+          <input type="text" id="title" name="title" value="<%= gig.title || '' %>" placeholder="e.g. Help moving a 1-bedroom apartment" required>
+        </div>
+        <div class="field">
+          <label for="category">Category</label>
+          <select id="category" name="category" required>
+            <% var cats = ['Moving & Labour','Web & Tech','Cleaning','Tutoring','Delivery','Events','Other']; %>
+            <option value="" disabled <%= gig.category ? '' : 'selected' %>>Choose a category</option>
+            <% cats.forEach(function(c){ %>
+              <option value="<%= c %>" <%= gig.category === c ? 'selected' : '' %>><%= c %></option>
+            <% }); %>
+          </select>
+        </div>
+        <div class="field">
+          <label for="location">Location</label>
+          <input type="text" id="location" name="location" value="<%= gig.location || '' %>" placeholder="e.g. Oshawa, ON" required>
+        </div>
+        <div class="field">
+          <label for="budget">Budget ($)</label>
+          <input type="number" id="budget" name="budget" value="<%= gig.budget || '' %>" min="0" step="1" placeholder="e.g. 80" required>
+        </div>
+        <div class="field">
+          <label for="description">Description</label>
+          <textarea id="description" name="description" placeholder="Describe the work, timing and any requirements." required><%= gig.description || '' %></textarea>
+        </div>
+        <div class="field">
+          <label for="postedBy">Posted by</label>
+          <input type="text" id="postedBy" name="postedBy" value="<%= gig.postedBy || '' %>" placeholder="Your name" required>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">Post Gig</button>
+          <a href="/gigs" class="btn btn-ghost">Cancel</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<%- include('../partials/footer') %>

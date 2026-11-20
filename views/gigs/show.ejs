@@ -1,0 +1,32 @@
+<%- include('../partials/header') %>
+
+<section class="section">
+  <div class="container detail">
+    <a href="/gigs" class="btn btn-ghost btn-sm">&larr; Back to gigs</a>
+
+    <div class="block" style="margin-top:16px;">
+      <span class="badge"><%= gig.category %></span>
+      <h1 style="margin:12px 0 0;"><%= gig.title %></h1>
+      <div class="meta-row">
+        <span class="badge"><%= gig.location %></span>
+        <span class="badge">Budget: $<%= gig.budget %></span>
+        <span class="badge">By <%= gig.postedBy %></span>
+      </div>
+
+      <p class="label">Description</p>
+      <p style="margin-top:6px;"><%= gig.description %></p>
+
+      <p class="label" style="margin-top:18px;">Posted</p>
+      <p style="margin-top:6px;"><%= gig.createdAt.toDateString() %></p>
+
+      <div class="card-actions" style="margin-top:24px;">
+        <a href="/gigs/<%= gig._id %>/edit" class="btn btn-primary btn-sm">Edit</a>
+        <form action="/gigs/<%= gig._id %>?_method=DELETE" method="POST" onsubmit="return confirm('Delete this gig?');" style="margin:0;">
+          <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include('../partials/footer') %>

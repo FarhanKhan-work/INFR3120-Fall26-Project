@@ -1,0 +1,37 @@
+<%- include('../partials/header') %>
+
+<section class="section">
+  <div class="container">
+    <div class="page-head">
+      <h1>Browse Gigs</h1>
+      <a href="/gigs/new" class="btn btn-primary">Post a Gig</a>
+    </div>
+
+    <% if (gigs.length === 0) { %>
+      <div class="empty">
+        <p>No gigs posted yet.</p>
+        <a href="/gigs/new" class="btn btn-primary">Be the first to post</a>
+      </div>
+    <% } else { %>
+      <div class="grid">
+        <% gigs.forEach(function(gig) { %>
+          <div class="card">
+            <span class="badge"><%= gig.category %></span>
+            <h3 style="margin-top:10px;"><%= gig.title %></h3>
+            <div class="meta"><%= gig.location %> &middot; <span class="budget">$<%= gig.budget %></span></div>
+            <p class="desc"><%= gig.description.length > 110 ? gig.description.substring(0,110) + '...' : gig.description %></p>
+            <div class="card-actions">
+              <a href="/gigs/<%= gig._id %>" class="btn btn-ghost btn-sm">View</a>
+              <a href="/gigs/<%= gig._id %>/edit" class="btn btn-ghost btn-sm">Edit</a>
+              <form action="/gigs/<%= gig._id %>?_method=DELETE" method="POST" onsubmit="return confirm('Delete this gig?');" style="margin:0;">
+                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+              </form>
+            </div>
+          </div>
+        <% }); %>
+      </div>
+    <% } %>
+  </div>
+</section>
+
+<%- include('../partials/footer') %>
