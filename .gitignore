@@ -1,0 +1,13 @@
+# dependencies
+node_modules/
+
+# environment / secrets (NEVER commit your MongoDB password)
+.env
+
+# logs
+npm-debug.log*
+*.log
+
+# OS / editor
+.DS_Store
+.vscode/
