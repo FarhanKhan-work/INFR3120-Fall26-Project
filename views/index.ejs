@@ -1,0 +1,58 @@
+<%- include('partials/header') %>
+
+<section class="hero">
+  <div class="container">
+    <h1>Find your next <span class="hl">gig</span>. Hire local <span class="hl">talent</span>.</h1>
+    <p>GigLink is the simple board for posting and finding short-term work in your area, from moving help to web design. Post in seconds, no account needed.</p>
+    <div class="hero-actions">
+      <a href="/gigs/new" class="btn btn-primary">Post a Gig</a>
+      <a href="/gigs" class="btn btn-ghost">Browse Gigs</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="features">
+      <div class="feature">
+        <h3>Post in seconds</h3>
+        <p>Add a title, budget and a short description. Your gig goes live on the board instantly.</p>
+      </div>
+      <div class="feature">
+        <h3>Browse local work</h3>
+        <p>Scroll every open gig in one place, sorted newest first, with budget and location up front.</p>
+      </div>
+      <div class="feature">
+        <h3>Manage with ease</h3>
+        <p>Edit the details or take a gig down once it's filled. Full control over every post.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<% if (gigs && gigs.length > 0) { %>
+<section class="section">
+  <div class="container">
+    <h2>Latest gigs</h2>
+    <p class="sub">The newest work posted on GigLink.</p>
+    <div class="grid">
+      <% gigs.forEach(function(gig) { %>
+        <div class="card">
+          <span class="badge"><%= gig.category %></span>
+          <h3 style="margin-top:10px;"><%= gig.title %></h3>
+          <div class="meta"><%= gig.location %> &middot; <span class="budget">$<%= gig.budget %></span></div>
+          <p class="desc"><%= gig.description.length > 100 ? gig.description.substring(0,100) + '...' : gig.description %></p>
+          <div class="card-actions">
+            <a href="/gigs/<%= gig._id %>" class="btn btn-ghost btn-sm">View</a>
+          </div>
+        </div>
+      <% }); %>
+    </div>
+    <div style="margin-top:20px;">
+      <a href="/gigs" class="btn btn-ghost">See all gigs</a>
+    </div>
+  </div>
+</section>
+<% } %>
+
+<%- include('partials/footer') %>
