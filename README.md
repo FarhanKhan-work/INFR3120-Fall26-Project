@@ -24,3 +24,4 @@ See the project doc in the repo for the project idea and who did what.
 
 Musawer: project idea and documentation
 Hamza: testing and video presentation
+Farhan: Express setup, sull crud, database, deployment
