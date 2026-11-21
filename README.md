@@ -21,3 +21,5 @@ GigLink is a gig board where people can post small local jobs (moving help, web 
 The real .env with the db password is not pushed to github, its in .gitignore. Only .env.example is here.
 
 See the project doc in the repo for the project idea and who did what.
+
+Musawer: project idea and documentation
